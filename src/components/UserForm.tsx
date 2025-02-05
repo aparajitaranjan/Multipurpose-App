@@ -90,7 +90,7 @@ const UserForm: React.FC = () => {
     return (
         <div style={{ maxWidth: '600px', margin: 'auto', padding: '20px' }}>
             <Typography variant="h5" gutterBottom>
-                User Data Form
+                User Form
             </Typography>
             <TextField
                 label="Name"

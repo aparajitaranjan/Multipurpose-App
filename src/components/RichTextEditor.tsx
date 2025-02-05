@@ -40,7 +40,22 @@ const RichTextEditor = () => {
     }, [isSaving]);
 
     return (
-        <Box sx={{ maxWidth: '800px', margin: 'auto', padding: '20px' }}>
+        <Box
+            sx={{
+                maxWidth: '800px',
+                margin: 'auto',
+                padding: '20px',
+                display: 'flex',
+                flexDirection: 'column', // Stack the editor and button vertically
+                alignItems: 'center', // Center content horizontally
+                justifyContent: 'center', // Center content vertically
+                height: '100vh', // Full viewport height to center content vertically
+                width: {
+                    xs: '90%', // 90% width on small screens
+                    sm: '60%', // 60% width on medium screens and up
+                },
+            }}
+        >
             <Typography variant="h5" gutterBottom>
                 Rich Text Editor
             </Typography>
@@ -50,20 +65,29 @@ const RichTextEditor = () => {
                     setContent(newContent); // Update the content when user types
                     setIsSaving(true); // Mark content as unsaved
                 }}
-                style={{ height: '300px', width: '100%' }}
-            />
-            <Button
-                variant="contained"
-                color="primary"
-                onClick={() => {
-                    localStorage.setItem('richTextContent', content); // Save content immediately on button click
-                    setIsSaving(false); // Mark content as saved
-                    alert('Content saved!'); // Show a success alert
+                style={{
+                    height: '300px',
+                    width: '100%', // Ensures ReactQuill takes full width of its container
                 }}
-                sx={{ marginTop: '20px' }}
-            >
-                Save
-            </Button>
+            />
+            {/* Save button centered */}
+            <Box sx={{ marginTop: '20px' }}>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                        localStorage.setItem('richTextContent', content); // Save content immediately on button click
+                        setIsSaving(false); // Mark content as saved
+                        alert('Content saved!'); // Show a success alert
+                    }}
+                    sx={{
+                        display: 'block', // Block to take full width
+                        margin: '0 auto', // Center the button horizontally
+                    }}
+                >
+                    Save
+                </Button>
+            </Box>
         </Box>
     );
 };
