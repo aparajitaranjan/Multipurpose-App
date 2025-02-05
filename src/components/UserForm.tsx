@@ -82,11 +82,6 @@ const UserForm: React.FC = () => {
         alert('Your data has been saved successfully!');
     };
 
-    // Handle navigation away from the page
-    const handleNavigationAway = () => {
-        if (unsavedChanges) setShowDialog(true);
-    };
-
     return (
         <div style={{ maxWidth: '600px', margin: 'auto', padding: '20px' }}>
             <Typography variant="h5" gutterBottom>
